@@ -1,0 +1,11 @@
+[Unit]
+Description=Monitor Audio Playback State and Send to MQTT
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/audio_status_mqtt.sh
+Restart=always
+Environment="PATH=/usr/bin:/usr/local/bin"
+
+[Install]
+WantedBy=multi-user.target
