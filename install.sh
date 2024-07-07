@@ -17,7 +17,7 @@ SCRIPT_FILE="/usr/local/bin/audio_status_mqtt.sh"
 sudo cp audio_status_mqtt.service $SERVICE_FILE
 
 # Replace placeholders in the script with user input
-sed -e "s/YOUR_HOME_ASSISTANT_IP/$BROKER_IP/" \
+sed -e "s/YOUR_MQTT_BROKER_IP/$BROKER_IP/" \
     -e "s/YOUR_MQTT_USERNAME/$USERNAME/" \
     -e "s/YOUR_MQTT_PASSWORD/$PASSWORD/" \
     -e "s/YOUR_DEVICE_NAME/$DEVICE_NAME/" \
