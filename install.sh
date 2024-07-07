@@ -3,10 +3,10 @@
 echo "Installing the audio status monitor service."
 
 # Prompt the user for configuration variables
+read -s "Enter a name for your device: " DEVICE_NAME
 read -p "Enter the MQTT broker IP: " BROKER_IP
 read -p "Enter the MQTT username: " USERNAME
 read -s -p "Enter the MQTT password: " PASSWORD
-read -s -p "Enter a name for your device: " DEVICE_NAME
 echo
 
 # Define paths
