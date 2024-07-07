@@ -47,7 +47,7 @@ while $continuous; do
         fi
     fi
 
-    if [[ current_status == "playing" || "$current_status" != "$previous_status" ]]; then
+    if [[ "$current_status" == "playing" || "$current_status" != "$previous_status" ]]; then
         mosquitto_pub -h $BROKER_IP -u $USERNAME -P $PASSWORD -t $STATUS_TOPIC -m $current_status
         mosquitto_pub -h $BROKER_IP -u $USERNAME -P $PASSWORD -t $VOLUME_TOPIC -m $volume
         previous_status=$current_status
