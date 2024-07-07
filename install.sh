@@ -13,20 +13,18 @@ echo
 SERVICE_FILE="/etc/systemd/system/audio_status_mqtt.service"
 SCRIPT_FILE="/usr/local/bin/audio_status_mqtt.sh"
 
-# Define GitHub URL for raw files
-GITHUB_REPO="https://raw.githubusercontent.com/sikaiser/audio-status-mqtt/main/"
-
-# Download the service file
-sudo curl -s $GITHUB_REPO/audio_status_mqtt.service > $SERVICE_FILE
+# Copy the service file
+sudo cp audio_status_mqtt.service $SERVICE_FILE
 
 # Replace placeholders in the script with user input
-curl -s $GITHUB_REPO/audio_status_mqtt.sh | sed -e "s/YOUR_HOME_ASSISTANT_IP/$BROKER_IP/" \
+sed -e "s/YOUR_HOME_ASSISTANT_IP/$BROKER_IP/" \
     -e "s/YOUR_MQTT_USERNAME/$USERNAME/" \
     -e "s/YOUR_MQTT_PASSWORD/$PASSWORD/" \
     -e "s/YOUR_DEVICE_NAME/$DEVICE_NAME/" \
-    > $SCRIPT_FILE
+    audio_status_mqtt.sh > temp_audio_status_mqtt.sh
 
-# Make the script file executable
+# Copy the modified script file to the appropriate location
+sudo cp temp_audio_status_mqtt.sh $SCRIPT_FILE
 sudo chmod +x $SCRIPT_FILE
 
 # Reload systemd to recognize the new service
