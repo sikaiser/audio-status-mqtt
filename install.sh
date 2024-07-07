@@ -17,10 +17,10 @@ SCRIPT_FILE="/usr/local/bin/audio_status_mqtt.sh"
 GITHUB_REPO="https://raw.githubusercontent.com/sikaiser/audio-status-mqtt/main/"
 
 # Download the service file
-sudo curl -s -L $GITHUB_REPO/audio_status_mqtt.service > $SERVICE_FILE
+sudo curl -s $GITHUB_REPO/audio_status_mqtt.service > $SERVICE_FILE
 
 # Replace placeholders in the script with user input
-sudo curl -s -L $GITHUB_REPO/audio_status_mqtt.sh | sed -e "s/YOUR_HOME_ASSISTANT_IP/$BROKER_IP/" \
+curl -s $GITHUB_REPO/audio_status_mqtt.sh | sed -e "s/YOUR_HOME_ASSISTANT_IP/$BROKER_IP/" \
     -e "s/YOUR_MQTT_USERNAME/$USERNAME/" \
     -e "s/YOUR_MQTT_PASSWORD/$PASSWORD/" \
     -e "s/YOUR_DEVICE_NAME/$DEVICE_NAME/" \
@@ -38,4 +38,4 @@ sudo systemctl enable audio_status_mqtt.service
 # Start the service
 sudo systemctl start audio_status_mqtt.service
 
-echo "Installation script ended."
+echo "Installation complete. The audio status monitor service is now running."
