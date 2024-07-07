@@ -36,4 +36,7 @@ sudo systemctl enable audio_status_mqtt.service
 # Start the service
 sudo systemctl start audio_status_mqtt.service
 
-echo "Installation complete. The audio status monitor service is now running."
+# Show the service status
+sudo systemctl status audio_status_mqtt.service
+
+echo "Installation script finished."
