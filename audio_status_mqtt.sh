@@ -16,7 +16,7 @@ STATUS_TOPIC="${DEVICE_NAME}/audio/status"
 VOLUME_TOPIC="${DEVICE_NAME}/audio/volume"
 
 DELAY_PAUSED=20 # how many loops of continuous silence until "paused" is sent
-DELAY_PAUSED=120 # how many loops of continuous silence until "stopped" is sent
+DELAY_STOPPED=120 # how many loops of continuous silence until "stopped" is sent
 
 count_no_volume=0
 
