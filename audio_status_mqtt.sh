@@ -31,27 +31,27 @@ while $continuous; do
 
 
     if (($volume != 0)); then
-		count_no_volume=0
+        count_no_volume=0
     else
         count_no_volume=$((count_no_volume+1))
     fi
 
-    case $count_no_volume in	
-	    0)
+    case $count_no_volume in
+        0)
             mosquitto_pub -h $BROKER_IP -u $USERNAME -P $PASSWORD -t $STATUS_TOPIC -m "playing"
             mosquitto_pub -h $BROKER_IP -u $USERNAME -P $PASSWORD -t $VOLUME_TOPIC -m $volume
-			;;
-		
-		$DELAY_PAUSED)
+            ;;
+
+        $DELAY_PAUSED)
             mosquitto_pub -h $BROKER_IP -u $USERNAME -P $PASSWORD -t $STATUS_TOPIC -m "paused"
             mosquitto_pub -h $BROKER_IP -u $USERNAME -P $PASSWORD -t $VOLUME_TOPIC -m $volume
-			;;
-			
-		$DELAY_STOPPED)
+            ;;
+
+        $DELAY_STOPPED)
             mosquitto_pub -h $BROKER_IP -u $USERNAME -P $PASSWORD -t $STATUS_TOPIC -m "stopped"
             mosquitto_pub -h $BROKER_IP -u $USERNAME -P $PASSWORD -t $VOLUME_TOPIC -m $volume
-			;;		
-	esac
+            ;;
+    esac
 
     if [ $debug = true ]; then
         continuous=false
@@ -59,4 +59,3 @@ while $continuous; do
     sleep 1
 
 done
-
